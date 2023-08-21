@@ -7,7 +7,7 @@ app.use(express.static("./static"));
 
 app.use(express.urlencoded({ extended: false }), routes);
 
-routes.get("^/$|/mini-ecom", (req, res) => {
+routes.get("^/$|/nodejs_eomp", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./static/html/index.html"));
 });
 
