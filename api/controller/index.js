@@ -27,7 +27,7 @@ routes.post("/login", bodyParser.json(), (req, res) => {
 });
 // end of user routes and start of products routes
 routes.post("/Product", bodyParser.json(), (req, res) => {
-  products.createProduct(req, res);
+  products.createProduct(req, req);
 });
       //  get all products 
 routes.get("/Products", (req, res) => {
