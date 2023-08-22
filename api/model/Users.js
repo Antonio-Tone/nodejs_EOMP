@@ -4,7 +4,7 @@ const { createToken } = require("../middleware/AuthenticateUser");
 class Users {
   fetchUsers(req, res) {
     const query = `
-        SELECT userID, firstName, lastName, gender, emailAdd, profileUrl FROM Users
+    SELECT userID, userName, lastName, emailAdd,job, gender, age FROM users
     `;
     db.query(query, (err, results) => {
       if (err) throw err;
@@ -16,7 +16,7 @@ class Users {
   }
   fetchUser(req, res) {
     const query = `
-        SELECT userID, firstName, lastName, gender, emailAdd, profileUrl FROM Users WHERE userID = ${req.params.id}
+    SELECT userID, userName, lastName, emailAdd, job, gender, age FROM users WHERE userID = ${req.params.id}
     `;
     db.query(query, (err, result) => {
       if (err) throw err;
@@ -32,7 +32,7 @@ class Users {
     const query = `
       SELECT emailAdd,
         userPass FROM
-         Users WHERE emailAdd = ?
+         users WHERE emailAdd = ?
     `;
 
     db.query(query, [emailAdd], async (err, result) => {
@@ -82,7 +82,7 @@ class Users {
     };
 
     const query = `
-      INSERT INTO Users SET ?
+      INSERT INTO users SET ?
     `;
 
     db.query(query, [data], (err) => {
@@ -101,7 +101,7 @@ class Users {
   }
   deleteUser(req, res) {
     const query = `
-        DELETE FROM Users WHERE userID = ${req.params.id}
+        DELETE FROM users WHERE userID = ${req.params.id}
     `;
 
     db.query(query, [req.params.id], (err) => {
@@ -114,7 +114,7 @@ class Users {
   }
   updateUser(req, res) {
     const query = `
-        UPDATE Users SET ? where userID = ${req.params.id}
+        UPDATE users SET ? where userID = ${req.params.id}
     `;
 
     db.query(query, [req.body, req.params.id], (err) => {

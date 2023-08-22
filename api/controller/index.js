@@ -25,7 +25,7 @@ routes.delete("/user/:id", (req, res) => {
 routes.post("/login", bodyParser.json(), (req, res) => {
   users.login(req, res);
 });
-// end of user routes and star of products routes
+// end of user routes and start of products routes
 routes.post("/Product", bodyParser.json(), (req, res) => {
   products.createProduct(req, res);
 });
